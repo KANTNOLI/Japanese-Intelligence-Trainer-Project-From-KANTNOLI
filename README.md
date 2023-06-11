@@ -1,0 +1,1 @@
+# Japanese Intelligence Trainer Project From KANTNOLI
