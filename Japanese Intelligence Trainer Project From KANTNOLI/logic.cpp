@@ -38,13 +38,13 @@ string calculateAllTime(int allTime) {
 	int minute = allTime % 3600 / 60; 
 	int second = allTime % 60;
 
-	return (hour > 9 ? to_string(hour) : "0" + to_string(hour)) + ":" + (minute > 9 ? to_string(minute) : "0" + to_string(minute)) + ":" + (second > 9 ? to_string(second) : "0" + to_string(second));
+	return to_string(hour) + ":" + (minute > 9 ? to_string(minute) : "0" + to_string(minute)) + ":" + (second > 9 ? to_string(second) : "0" + to_string(second));
 }
 
 string chooseMsg(int chooseMsgID) {
 	string msg = "";
 	switch (chooseMsgID) {
-	case 0: msg += "Введите мя пользователя: "; break;
+	case 0: msg += "Введите имя пользователя: "; break;
 	case 1: msg += "Сколько примеров вы хотите решить?\n---> "; break;
 	case 2: msg += "Вы ошиблись! Попробуйте еще раз "; break;
 	case 3: msg += "Желаете повторить еще раз? - нажмите 1 / ДА \n---> "; break;

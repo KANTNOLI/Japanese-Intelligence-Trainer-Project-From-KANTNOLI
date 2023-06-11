@@ -23,7 +23,6 @@ int main() {
 	cin >> nickName;
 
 	while (flag) {
-		timeStart = time(NULL);
 		countMistak = 0;
 		msg = chooseLanguage ? chooseMsg(1) : chooseMsg(11);
 		cout << msg;
@@ -32,6 +31,7 @@ int main() {
 		} while (countExample <= 0);
 		system("cls");
 
+		timeStart = time(NULL);
 		for (int i = 0; i < countExample; i++) {
 			string example = createExample(&result);
 			while (true) { //цикл while - будте работать, пока пользователь правильно не решит уравнение
@@ -47,13 +47,14 @@ int main() {
 
 
 		}
+		system("cls");
 		timeWin = time(NULL);
 		int allTime = timeWin - timeStart;
 
 		msg = chooseLanguage ? chooseMsg(4) : chooseMsg(14);
 		cout << msg << nickName << endl;
 		msg = chooseLanguage ? chooseMsg(5) : chooseMsg(15);
-		cout << msg << calculateAllTime(allTime) << endl;
+		cout << msg << calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + 10800) + " - " + calculateAllTime(timeWin + 10800) << endl; // - 10800 - это 3ч - нужно для регулирования времени под наше
 		msg = chooseLanguage ? chooseMsg(6) : chooseMsg(16);
 		cout << msg << countExample << endl;
 		msg = chooseLanguage ? chooseMsg(7) : chooseMsg(17);
