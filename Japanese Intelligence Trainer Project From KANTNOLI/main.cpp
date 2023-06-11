@@ -1,31 +1,34 @@
-#include "logic.h"
+#include "logic.h" 
 
 int main() {
 	setlocale(LC_ALL, "RUS");
-	srand(time(NULL)); 
-	string msg = "";  
-	string nickName = ""; 
+	srand(time(NULL));
+	string msg = "";
+	string nickName = "";
 	bool flag = true; //для цикла while
-	int timeStart; 
-	int timeWin; 
-	bool chooseLanguage = false; 
+	int timeStart;
+	int timeWin;
+	bool chooseLanguage = false;
 	int countExample = 0; //кол-во примеров  
 	int result; //результат уровнения
 	int input; //ввод результата уравнения
 	int countMistak = 0; //кол-во ошибок, сделаных пользователем 
-	 
+
 	cout << "Выберите язык  (1 - Русский; Другие клавиши - Англ)" << endl;
 	cout << "Select language (1 - Russian; Other keys - English)\n---> ";
-	chooseLanguage = getchar() == '1'; 
+	chooseLanguage = getchar() == '1';
+	system("cls");
+	msg = chooseLanguage ? chooseMsg(0) : chooseMsg(10);
+	cout << msg;
+	cin >> nickName;
 
 	while (flag) {
-		system("cls");
 		timeStart = time(NULL);
-		countMistak = 0; 
-		msg = chooseLanguage ? chooseMsg(1) : chooseMsg(11); 
-		cout << msg; 
-		do {  
-			cin >> countExample; 
+		countMistak = 0;
+		msg = chooseLanguage ? chooseMsg(1) : chooseMsg(11);
+		cout << msg;
+		do {
+			cin >> countExample;
 		} while (countExample <= 0);
 		system("cls");
 
@@ -46,13 +49,24 @@ int main() {
 		}
 		timeWin = time(NULL);
 		int allTime = timeWin - timeStart;
-		cout << calculateAllTime(allTime) << endl;
+
+		msg = chooseLanguage ? chooseMsg(4) : chooseMsg(14);
+		cout << msg << nickName << endl;
+		msg = chooseLanguage ? chooseMsg(5) : chooseMsg(15);
+		cout << msg << calculateAllTime(allTime) << endl;
+		msg = chooseLanguage ? chooseMsg(6) : chooseMsg(16);
+		cout << msg << countExample << endl;
+		msg = chooseLanguage ? chooseMsg(7) : chooseMsg(17);
+		cout << msg << countMistak << endl;
 		getchar();
 
+
+
 		msg = chooseLanguage ? chooseMsg(3) : chooseMsg(13);
-		cout << msg << endl;
-		flag = getchar() == '1' ? true : false ;
-	} 
+		cout << msg;
+		flag = getchar() == '1' ? true : false;
+		system("cls");
+	}
 
 	return 0;
 }

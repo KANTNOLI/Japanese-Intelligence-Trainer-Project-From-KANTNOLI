@@ -47,18 +47,20 @@ string chooseMsg(int chooseMsgID) {
 	case 0: msg += "Введите мя пользователя: "; break;
 	case 1: msg += "Сколько примеров вы хотите решить?\n---> "; break;
 	case 2: msg += "Вы ошиблись! Попробуйте еще раз "; break;
-	case 3: msg += "Желаете повторить еще раз - нажмите 1 ? "; break;
+	case 3: msg += "Желаете повторить еще раз? - нажмите 1 / ДА \n---> "; break;
 	case 4: msg += "Имя пользователя: "; break;
 	case 5: msg += "Время прохождения: "; break;
 	case 6: msg += "Количество примеров: "; break;
+	case 7: msg += "Количество ошибок: "; break;
 
 	case 10: msg += "Input your Nick Name: "; break;
 	case 11: msg += "How many examples do you want to solve?\n---> "; break;
 	case 12: msg += "You are mistaken! Try again "; break;
-	case 13: msg += "Would you like to repeat again - input 1 ? "; break;
+	case 13: msg += "Would you like to repeat again? - input 1 / YES \n---> "; break;
 	case 14: msg += "Nick Name: "; break;
 	case 15: msg += "Passing time:"; break;
 	case 16: msg += "Number of examples: "; break;
+	case 17: msg += "Number of mistakes: "; break;
 	}
 
 	return msg;
