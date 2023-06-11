@@ -1,6 +1,7 @@
 #pragma once
 
-#include "main.h"
+#include "UseraData.h"
+void createTopUsers(UseraData* top, int size);
 
 void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC);
 

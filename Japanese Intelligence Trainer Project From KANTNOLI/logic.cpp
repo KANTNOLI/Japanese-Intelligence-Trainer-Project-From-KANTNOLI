@@ -1,5 +1,25 @@
 #include "logic.h"
 
+void createTopUsers(UseraData* top, int size) {
+	//i - вывод
+	//o - ввод
+	ifstream fin;
+	ofstream fout;
+	string msg = "";
+	fin.open("top5.txt");
+
+	fin >> msg;
+	if (msg == "") {
+		for (int i = 0; i < size; i++) {
+			fout << top[i].get_name() + " ";
+			fout << top[i].get_time() + " ";
+			fout << top[i].get_countExamples() + " ";
+			fout << top[i].get_countMistakes() + "\n";
+		}
+	}
+
+}
+
 void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC) { //функция берет адресса наших переменных, чтобы убить 3-ех зайцев одним выстрелом  
 	*pDigitA = rand() % 9 + 1; //генерация первого числа от 1 до 9
 	do {
