@@ -63,10 +63,11 @@ int main() {
 		msg = chooseLanguage ? chooseMsg(7) : chooseMsg(17);
 		cout << msg << countMistak << endl;
 		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak);
-
+		
+		cout << "<----------------------->" << endl;
 		string temp = chooseLanguage ? convetStringArray(top, sizeTop, 8) : convetStringArray(top, sizeTop, 18); 
-		cout << temp << endl; 
-
+		cout << temp;
+		cout << "<----------------------->" << endl; 
 		msg = chooseLanguage ? chooseMsg(3) : chooseMsg(13); 
 		cout << msg;
 		getchar();

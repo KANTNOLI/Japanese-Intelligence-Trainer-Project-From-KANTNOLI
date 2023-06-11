@@ -66,8 +66,8 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 	UserData current(name, time, countExamples, countMistakes); 
 
 	for (int i = 0; i < size; i++) {
-		if (current.get_countExamples() > top[i].get_countExamples() or current.get_countExamples() == top[i].get_countExamples() and current.get_time() < top[i].get_time()) {
-			//UserData temp(name, time, countExamples, countMistakes);
+		if (current.get_countExamples() > top[i].get_countExamples() or current.get_countExamples() == top[i].get_countExamples() and current.get_time() < top[i].get_time() or
+			current.get_countExamples() == top[i].get_countExamples() and current.get_time() == top[i].get_time() and current.get_countMistakes() > top[i].get_countMistakes()) {
 			UserData temp; 
 
 			temp.set_name(top[i].get_name());
@@ -97,7 +97,7 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 	else {
 		for (int i = 0; i < size; i++) {
 			fout << top[i].get_name() + " ";
-			fout << calculateAllTime(top[i].get_time()) + " ";
+			fout << to_string(top[i].get_time()) + " ";
 			fout << to_string(top[i].get_countExamples()) + " ";
 			fout << to_string(top[i].get_countMistakes()) + "\n";
 		}
@@ -114,7 +114,7 @@ string convetStringArray(UserData* top,int size, int chooseMsgID) {
 		msg += top[i].get_name() + "  ";  
 		msg += calculateAllTime(top[i].get_time()) + " ";
 		msg += to_string(top[i].get_countExamples()) + " ";
-		msg += to_string(top[i].get_countMistakes()) + "\n";
+		msg += to_string(top[i].get_countMistakes()) + "\n\n";
 	}
 
 
@@ -173,7 +173,7 @@ string chooseMsg(int chooseMsgID) {
 	case 5: msg += "Время прохождения: "; break;
 	case 6: msg += "Количество примеров: "; break;
 	case 7: msg += "Количество ошибок: "; break;
-	case 8: msg += "Место "; break;
+	case 8: msg += "МЕСТО "; break;
 
 	case 10: msg += "Input your Nick Name: "; break;
 	case 11: msg += "How many examples do you want to solve?\n---> "; break;
@@ -183,7 +183,7 @@ string chooseMsg(int chooseMsgID) {
 	case 15: msg += "Passing time:"; break;
 	case 16: msg += "Number of examples: "; break;
 	case 17: msg += "Number of mistakes: "; break;
-	case 18: msg += "Top "; break;
+	case 18: msg += "TOP "; break;
 	}
 
 	return msg;

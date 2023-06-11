@@ -10,9 +10,9 @@ private:
 
 
 public:
-	UserData() : name("Unknouwn-NICKNAME"), time(-1), countExamples(-1), countMistakes(-1) {}; 
-	UserData(string name, int time, int countExamples, int countMistakes) : name(name), time(time > 0 ? time : -1), 
-		countExamples(countExamples > 0 ? countExamples : -1), countMistakes(countMistakes >= 0 ? countMistakes : -1) {};
+	UserData() : name("Unknouwn-NICKNAME"), time(0), countExamples(0), countMistakes(0) {}; 
+	UserData(string name, int time, int countExamples, int countMistakes) : name(name), time(time > 0 ? time : 0), 
+		countExamples(countExamples > 0 ? countExamples : 0), countMistakes(countMistakes >= 0 ? countMistakes : 0) {};
 	~UserData() {};  
 
 	string get_name() { return name; };
