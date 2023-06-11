@@ -48,38 +48,42 @@ void convertUserTopArray(UserData* top, int size) {
 			string tempString = "";
 			fin >> tempString;
 			top[i].set_name(tempString);
-			fin >> tempString;
-			top[i].set_time(tempString);
-			tempString = "";
 			int tempInt = -1;
+			fin >> tempInt; 
+			top[i].set_time(tempInt);
 			fin >> tempInt;
 			top[i].set_countExamples(tempInt);
 			fin >> tempInt;
 			top[i].set_countMistakes(tempInt);
 			tempInt = -1;
-
-			cout << "WORK" << endl;
 		}
 	}
 
 	fin.close();
 }
 
-void addUserArray(UserData* top, int size, string name, string time, int countExamples, int countMistakes) {
-	UserData current(name, time, countExamples, countMistakes);
+void addUserArray(UserData* top, int size, string name, int time, int countExamples, int countMistakes) {
+	UserData current(name, time, countExamples, countMistakes); 
+
 	for (int i = 0; i < size; i++) {
-		if (countExamples >= top[i].get_countExamples() and time < top[i].get_time()) {
+		if (current.get_countExamples() > top[i].get_countExamples() or current.get_countExamples() == top[i].get_countExamples() and current.get_time() < top[i].get_time()) {
 			//UserData temp(name, time, countExamples, countMistakes);
-			UserData* temp = &top[i];
+			UserData temp; 
+
+			temp.set_name(top[i].get_name());
+			temp.set_time(top[i].get_time());
+			temp.set_countExamples(top[i].get_countExamples());
+			temp.set_countMistakes(top[i].get_countMistakes());
+
 			top[i].set_name(current.get_name());
 			top[i].set_time(current.get_time());
 			top[i].set_countExamples(current.get_countExamples());
 			top[i].set_countMistakes(current.get_countMistakes());
 
-			current.set_name(temp->get_name()); 
-			current.set_time(temp->get_time());
-			current.set_countExamples(temp->get_countExamples()); 
-			current.set_countMistakes(temp->get_countMistakes()); 
+			current.set_name(temp.get_name()); 
+			current.set_time(temp.get_time());
+			current.set_countExamples(temp.get_countExamples());  
+			current.set_countMistakes(temp.get_countMistakes()); 
 		}
 	}
 
@@ -93,9 +97,9 @@ void addUserArray(UserData* top, int size, string name, string time, int countEx
 	else {
 		for (int i = 0; i < size; i++) {
 			fout << top[i].get_name() + " ";
-			fout << top[i].get_time() + " ";
-			fout << top[i].get_countExamples() + " ";
-			fout << top[i].get_countMistakes() + "\n";
+			fout << calculateAllTime(top[i].get_time()) + " ";
+			fout << to_string(top[i].get_countExamples()) + " ";
+			fout << to_string(top[i].get_countMistakes()) + "\n";
 		}
 	}
 
@@ -106,9 +110,9 @@ string convetStringArray(UserData* top,int size, int chooseMsgID) {
 	string msg = "";
 
 	for (int i = 0; i < size; i++) {
-		msg += chooseMsg(chooseMsgID) + to_string(i) + "\n";
-		msg += top[i].get_name() + " ";  
-		msg += top[i].get_time() + " "; 
+		msg += chooseMsg(chooseMsgID) + to_string(i + 1) + "\n";
+		msg += top[i].get_name() + "  ";  
+		msg += calculateAllTime(top[i].get_time()) + " ";
 		msg += to_string(top[i].get_countExamples()) + " ";
 		msg += to_string(top[i].get_countMistakes()) + "\n";
 	}

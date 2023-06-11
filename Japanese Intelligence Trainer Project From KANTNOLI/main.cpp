@@ -1,7 +1,7 @@
 #include "logic.h" 
 
-int main() {
-	setlocale(LC_ALL, "RUS");
+int main() { 
+	setlocale(LC_ALL, "RUS"); 
 	srand(time(NULL));
 	string msg = "", nickName = ""; 
 	bool flag = true; //для цикла while
@@ -10,7 +10,7 @@ int main() {
 	int countExample = 0, countMistak = 0;
 	int result, input; 
 	int sizeTop = 5;
-	UseraData* top = new UseraData[sizeTop];
+	UserData* top = new UserData[sizeTop];
 
 
 
@@ -62,12 +62,15 @@ int main() {
 		cout << msg << countExample << endl;
 		msg = chooseLanguage ? chooseMsg(7) : chooseMsg(17);
 		cout << msg << countMistak << endl;
+		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak);
+
+		string temp = chooseLanguage ? convetStringArray(top, sizeTop, 8) : convetStringArray(top, sizeTop, 18); 
+		cout << temp << endl; 
+
+		msg = chooseLanguage ? chooseMsg(3) : chooseMsg(13); 
+		cout << msg;
 		getchar();
 
-
-
-		msg = chooseLanguage ? chooseMsg(3) : chooseMsg(13);
-		cout << msg;
 		flag = getchar() == '1' ? true : false;
 		system("cls");
 	}

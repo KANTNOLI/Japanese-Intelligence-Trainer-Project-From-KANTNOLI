@@ -4,7 +4,7 @@
 
 void createTopUsersStart(UserData* top, int size);  
 void convertUserTopArray(UserData* top, int size);  
-void addUserArray(UserData* top, int size, string name, string time, int countExamples, int countMistakes);
+void addUserArray(UserData* top, int size, string name, int time, int countExamples, int countMistakes);
 string convetStringArray(UserData* top, int size, int chooseMsgID);
 
 void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC);
