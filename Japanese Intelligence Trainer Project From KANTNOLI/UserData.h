@@ -1,19 +1,19 @@
 #pragma once
 #include "main.h"
 
-class UseraData {
+class UserData {
 private:
-	string name;
+	string name; 
 	string time;
 	int countExamples;
 	int countMistakes;
 
 
 public:
-	UseraData() : name("Unknouwn NICKNAME"), time("Unknouwn TIME"), countExamples(-1), countMistakes(-1) {};
-	UseraData(string name, string time, int countExamples, int countMistakes) : name(name), time(time),
+	UserData() : name("Unknouwn-NICKNAME"), time("Unknouwn-TIME"), countExamples(-1), countMistakes(-1) {};
+	UserData(string name, string time, int countExamples, int countMistakes) : name(name), time(time),
 		countExamples(countExamples > 0 ? countExamples : -1), countMistakes(countMistakes >= 0 ? countMistakes : -1) {};
-	~UseraData() {};
+	~UserData() {};  
 
 	string get_name() { return name; };
 	void set_name(string name) { this->name = name; };

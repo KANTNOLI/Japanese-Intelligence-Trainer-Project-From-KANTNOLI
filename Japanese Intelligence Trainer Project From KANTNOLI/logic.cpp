@@ -1,15 +1,96 @@
 #include "logic.h"
 
-void createTopUsers(UseraData* top, int size) {
+void createTopUsersStart(UserData* top, int size) {
 	//i - вывод
 	//o - ввод
 	ifstream fin;
 	ofstream fout;
 	string msg = "";
-	fin.open("top5.txt");
+	fin.open("top5.txt", ifstream::app);
 
 	fin >> msg;
-	if (msg == "") {
+	if (!fin.is_open()) {
+		cout << "ERROR - Number 1 - FILE" << endl;
+	}
+	else {
+		if (msg == "") {
+			fout.open("top5.txt", ifstream::app);
+			if (!fout.is_open()) {
+				cout << "ERROR - Number 2 - FILE" << endl;
+			}
+			else {
+				for (int i = 0; i < size; i++) {
+					fout << top[i].get_name() + " ";
+					fout << top[i].get_time() + " ";
+					fout << to_string(top[i].get_countExamples()) + " ";
+					fout << to_string(top[i].get_countMistakes()) + "\n";
+				}
+				fout.close();
+			}
+		}
+		else {
+			convertUserTopArray(top, size);
+		}
+	}
+	fin.close();
+}
+
+void convertUserTopArray(UserData* top, int size) {
+	ifstream fin;
+
+	fin.open("top5.txt");
+
+	if (!fin.is_open()) {
+		cout << "ERROR - number 3 - FILE" << endl;
+	}
+	else {
+		for (int i = 0; i < size; i++) {
+			string tempString = "";
+			fin >> tempString;
+			top[i].set_name(tempString);
+			fin >> tempString;
+			top[i].set_time(tempString);
+			tempString = "";
+			int tempInt = -1;
+			fin >> tempInt;
+			top[i].set_countExamples(tempInt);
+			fin >> tempInt;
+			top[i].set_countMistakes(tempInt);
+			tempInt = -1;
+
+			cout << "WORK" << endl;
+		}
+	}
+
+	fin.close();
+}
+
+void addUserArray(UserData* top, int size, string name, string time, int countExamples, int countMistakes) {
+	UserData current(name, time, countExamples, countMistakes);
+	for (int i = 0; i < size; i++) {
+		if (countExamples >= top[i].get_countExamples() and time < top[i].get_time()) {
+			//UserData temp(name, time, countExamples, countMistakes);
+			UserData* temp = &top[i];
+			top[i].set_name(current.get_name());
+			top[i].set_time(current.get_time());
+			top[i].set_countExamples(current.get_countExamples());
+			top[i].set_countMistakes(current.get_countMistakes());
+
+			current.set_name(temp->get_name()); 
+			current.set_time(temp->get_time());
+			current.set_countExamples(temp->get_countExamples()); 
+			current.set_countMistakes(temp->get_countMistakes()); 
+		}
+	}
+
+	ofstream fout;
+
+	fout.open("top5.txt");
+
+	if (!fout.is_open()) {
+		cout << "ERROR - number 4 - FILE" << endl;
+	}
+	else {
 		for (int i = 0; i < size; i++) {
 			fout << top[i].get_name() + " ";
 			fout << top[i].get_time() + " ";
@@ -18,6 +99,22 @@ void createTopUsers(UseraData* top, int size) {
 		}
 	}
 
+	fout.close();
+}
+
+string convetStringArray(UserData* top,int size, int chooseMsgID) {
+	string msg = "";
+
+	for (int i = 0; i < size; i++) {
+		msg += chooseMsg(chooseMsgID) + to_string(i) + "\n";
+		msg += top[i].get_name() + " ";  
+		msg += top[i].get_time() + " "; 
+		msg += to_string(top[i].get_countExamples()) + " ";
+		msg += to_string(top[i].get_countMistakes()) + "\n";
+	}
+
+
+	return msg;
 }
 
 void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC) { //функция берет адресса наших переменных, чтобы убить 3-ех зайцев одним выстрелом  
@@ -36,7 +133,7 @@ string createExample(int* pResult) {
 	int digitA, digitB, digitC; //создание ячеек в памяти для 3 цифр
 
 	while (true) { //цикл будет создавать пример, пока он нас не устроит по условию
-		generationDigits(&digitA, &digitB, &digitC); 
+		generationDigits(&digitA, &digitB, &digitC);
 
 		if (digitA - digitB >= 0) {
 			outputExample += to_string(digitA) + " - " + to_string(digitB) + " + " + to_string(digitC) + " = "; //создаем вищуально пример для решения
@@ -45,17 +142,17 @@ string createExample(int* pResult) {
 		}
 		else if ((digitA + digitB) - digitC >= 0) {
 			outputExample += to_string(digitA) + " + " + to_string(digitB) + " - " + to_string(digitC) + " = ";
-			*pResult = (digitA + digitB) - digitC; 
-			break; 
+			*pResult = (digitA + digitB) - digitC;
+			break;
 		}
 	}
 
-	return outputExample; 
+	return outputExample;
 }
 
 string calculateAllTime(int allTime) {
-	int hour = allTime / 3600 % 24; 
-	int minute = allTime % 3600 / 60; 
+	int hour = allTime / 3600 % 24;
+	int minute = allTime % 3600 / 60;
 	int second = allTime % 60;
 
 	return to_string(hour) + ":" + (minute > 9 ? to_string(minute) : "0" + to_string(minute)) + ":" + (second > 9 ? to_string(second) : "0" + to_string(second));
@@ -72,6 +169,7 @@ string chooseMsg(int chooseMsgID) {
 	case 5: msg += "Время прохождения: "; break;
 	case 6: msg += "Количество примеров: "; break;
 	case 7: msg += "Количество ошибок: "; break;
+	case 8: msg += "Место "; break;
 
 	case 10: msg += "Input your Nick Name: "; break;
 	case 11: msg += "How many examples do you want to solve?\n---> "; break;
@@ -81,6 +179,7 @@ string chooseMsg(int chooseMsgID) {
 	case 15: msg += "Passing time:"; break;
 	case 16: msg += "Number of examples: "; break;
 	case 17: msg += "Number of mistakes: "; break;
+	case 18: msg += "Top "; break;
 	}
 
 	return msg;

@@ -1,7 +1,11 @@
 #pragma once
 
-#include "UseraData.h"
-void createTopUsers(UseraData* top, int size);
+#include "UserData.h" 
+
+void createTopUsersStart(UserData* top, int size);  
+void convertUserTopArray(UserData* top, int size);  
+void addUserArray(UserData* top, int size, string name, string time, int countExamples, int countMistakes);
+string convetStringArray(UserData* top, int size, int chooseMsgID);
 
 void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC);
 
