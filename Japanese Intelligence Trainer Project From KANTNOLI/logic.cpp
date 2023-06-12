@@ -6,7 +6,7 @@ void createTopUsersStart(UserData* top, int size) {
 	ifstream fin;
 	ofstream fout;
 	string msg = "";
-	fin.open("top5.txt", ifstream::app);
+	fin.open("top5", ifstream::app);
 
 	fin >> msg;
 	if (!fin.is_open()) {
@@ -14,7 +14,7 @@ void createTopUsersStart(UserData* top, int size) {
 	}
 	else {
 		if (msg == "") {
-			fout.open("top5.txt", ifstream::app);
+			fout.open("top5", ifstream::app);
 			if (!fout.is_open()) {
 				cout << "ERROR - Number 2 - FILE" << endl;
 			}
@@ -38,7 +38,7 @@ void createTopUsersStart(UserData* top, int size) {
 void convertUserTopArray(UserData* top, int size) {
 	ifstream fin;
 
-	fin.open("top5.txt");
+	fin.open("top5");
 
 	if (!fin.is_open()) {
 		cout << "ERROR - number 3 - FILE" << endl;
@@ -89,7 +89,7 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 
 	ofstream fout;
 
-	fout.open("top5.txt");
+	fout.open("top5");
 
 	if (!fout.is_open()) {
 		cout << "ERROR - number 4 - FILE" << endl;

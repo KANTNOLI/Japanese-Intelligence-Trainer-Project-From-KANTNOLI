@@ -13,9 +13,6 @@ int main() {
 	UserData* top = new UserData[sizeTop];
 
 
-
-
-
 	cout << "Выберите язык  (1 - Русский; Другие клавиши - Англ)" << endl;
 	cout << "Select language (1 - Russian; Other keys - English)\n---> ";
 	chooseLanguage = getchar() == '1';
