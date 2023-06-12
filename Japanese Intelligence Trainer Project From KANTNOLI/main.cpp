@@ -65,6 +65,9 @@ int main() {
 		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak);
 		
 		cout << "<----------------------->" << endl;
+		msg = chooseLanguage ? chooseMsg(9) : chooseMsg(19);
+		cout << msg << endl << endl;
+
 		string temp = chooseLanguage ? convetStringArray(top, sizeTop, 8) : convetStringArray(top, sizeTop, 18); 
 		cout << temp;
 		cout << "<----------------------->" << endl; 

@@ -174,6 +174,7 @@ string chooseMsg(int chooseMsgID) {
 	case 6: msg += "Количество примеров: "; break;
 	case 7: msg += "Количество ошибок: "; break;
 	case 8: msg += "МЕСТО "; break;
+	case 9: msg += "| Имя | Время | Уравнений | Ошибок | "; break;
 
 	case 10: msg += "Input your Nick Name: "; break;
 	case 11: msg += "How many examples do you want to solve?\n---> "; break;
@@ -184,6 +185,7 @@ string chooseMsg(int chooseMsgID) {
 	case 16: msg += "Number of examples: "; break;
 	case 17: msg += "Number of mistakes: "; break;
 	case 18: msg += "TOP "; break;
+	case 19: msg += "| Name | Time | Examples | Mistakes | "; break;
 	}
 
 	return msg;
