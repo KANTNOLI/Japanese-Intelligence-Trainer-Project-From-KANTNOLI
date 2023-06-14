@@ -67,7 +67,7 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 
 	for (int i = 0; i < size; i++) {
 		if (current.get_countExamples() > top[i].get_countExamples() or current.get_countExamples() == top[i].get_countExamples() and current.get_time() < top[i].get_time() or
-			current.get_countExamples() == top[i].get_countExamples() and current.get_time() == top[i].get_time() and current.get_countMistakes() > top[i].get_countMistakes()) {
+			current.get_countExamples() == top[i].get_countExamples() and current.get_time() == top[i].get_time() and current.get_countMistakes() < top[i].get_countMistakes()) {
 			UserData temp; 
 
 			temp.set_name(top[i].get_name());
