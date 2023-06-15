@@ -1,10 +1,10 @@
-#include "logic.h" 
+п»ї#include "logic.h" 
 
 int main() { 
 	setlocale(LC_ALL, "RUS"); 
 	srand(time(NULL));
 	string msg = "", nickName = ""; 
-	bool flag = true; //для цикла while
+	bool flag = true; //РґР»СЏ С†РёРєР»Р° while
 	int timeStart, timeWin; 
 	bool chooseLanguage = false;
 	int countExample = 0, countMistak = 0;
@@ -13,7 +13,7 @@ int main() {
 	UserData* top = new UserData[sizeTop];
 
 
-	cout << "Выберите язык  (1 - Русский; Другие клавиши - Англ)" << endl;
+	cout << "Р’С‹Р±РµСЂРёС‚Рµ СЏР·С‹Рє  (1 - Р СѓСЃСЃРєРёР№; Р”СЂСѓРіРёРµ РєР»Р°РІРёС€Рё - РђРЅРіР»)" << endl;
 	cout << "Select language (1 - Russian; Other keys - English)\n---> ";
 	chooseLanguage = getchar() == '1';
 	system("cls");
@@ -34,11 +34,11 @@ int main() {
 		timeStart = time(NULL);
 		for (int i = 0; i < countExample; i++) {
 			string example = createExample(&result);
-			while (true) { //цикл while - будте работать, пока пользователь правильно не решит уравнение
+			while (true) { //С†РёРєР» while - Р±СѓРґС‚Рµ СЂР°Р±РѕС‚Р°С‚СЊ, РїРѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїСЂР°РІРёР»СЊРЅРѕ РЅРµ СЂРµС€РёС‚ СѓСЂР°РІРЅРµРЅРёРµ
 				cout << example;
 				cin >> input;
-				if (result == input) {//в случае, если ответ правильный
-					break; //закрытие цикла
+				if (result == input) {//РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РѕС‚РІРµС‚ РїСЂР°РІРёР»СЊРЅС‹Р№
+					break; //Р·Р°РєСЂС‹С‚РёРµ С†РёРєР»Р°
 				}
 				msg = chooseLanguage ? chooseMsg(2) : chooseMsg(12);
 				cout << msg << endl;
@@ -54,7 +54,7 @@ int main() {
 		msg = chooseLanguage ? chooseMsg(4) : chooseMsg(14);
 		cout << msg << nickName << endl;
 		msg = chooseLanguage ? chooseMsg(5) : chooseMsg(15);
-		cout << msg << calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + 10800) + " - " + calculateAllTime(timeWin + 10800) << endl; // - 10800 - это 3ч - нужно для регулирования времени под наше
+		cout << msg << calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + 10800) + " - " + calculateAllTime(timeWin + 10800) << endl; // - 10800 - СЌС‚Рѕ 3С‡ - РЅСѓР¶РЅРѕ РґР»СЏ СЂРµРіСѓР»РёСЂРѕРІР°РЅРёСЏ РІСЂРµРјРµРЅРё РїРѕРґ РЅР°С€Рµ
 		msg = chooseLanguage ? chooseMsg(6) : chooseMsg(16);
 		cout << msg << countExample << endl;
 		msg = chooseLanguage ? chooseMsg(7) : chooseMsg(17);

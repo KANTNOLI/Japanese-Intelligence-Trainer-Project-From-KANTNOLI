@@ -1,8 +1,8 @@
-#include "logic.h"
+ï»¿#include "logic.h"
 
 void createTopUsersStart(UserData* top, int size) {
-	//i - âûâîä
-	//o - ââîä
+	//i - Ğ²Ñ‹Ğ²Ğ¾Ğ´
+	//o - Ğ²Ğ²Ğ¾Ğ´
 	ifstream fin;
 	ofstream fout;
 	string msg = "";
@@ -121,28 +121,28 @@ string convetStringArray(UserData* top,int size, int chooseMsgID) {
 	return msg;
 }
 
-void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC) { //ôóíêöèÿ áåğåò àäğåññà íàøèõ ïåğåìåííûõ, ÷òîáû óáèòü 3-åõ çàéöåâ îäíèì âûñòğåëîì  
-	*pDigitA = rand() % 9 + 1; //ãåíåğàöèÿ ïåğâîãî ÷èñëà îò 1 äî 9
+void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC) { //Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ±ĞµÑ€ĞµÑ‚ Ğ°Ğ´Ñ€ĞµÑÑĞ° Ğ½Ğ°ÑˆĞ¸Ñ… Ğ¿ĞµÑ€ĞµĞ¼ĞµĞ½Ğ½Ñ‹Ñ…, Ñ‡Ñ‚Ğ¾Ğ±Ñ‹ ÑƒĞ±Ğ¸Ñ‚ÑŒ 3-ĞµÑ… Ğ·Ğ°Ğ¹Ñ†ĞµĞ² Ğ¾Ğ´Ğ½Ğ¸Ğ¼ Ğ²Ñ‹ÑÑ‚Ñ€ĞµĞ»Ğ¾Ğ¼  
+	*pDigitA = rand() % 9 + 1; //Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ñ Ğ¿ĞµÑ€Ğ²Ğ¾Ğ³Ğ¾ Ñ‡Ğ¸ÑĞ»Ğ° Ğ¾Ñ‚ 1 Ğ´Ğ¾ 9
 	do {
-		*pDigitB = rand() % 9 + 1; //ãåíåğàöèÿ âòîğîãî ÷èñëà îò 1 äî 9
-	} while (*pDigitB == *pDigitA); //ïîâòîğÿåì, ïîêà íå ïîëó÷èì ğàçíîå ÷èñëî
+		*pDigitB = rand() % 9 + 1; //Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ñ Ğ²Ñ‚Ğ¾Ñ€Ğ¾Ğ³Ğ¾ Ñ‡Ğ¸ÑĞ»Ğ° Ğ¾Ñ‚ 1 Ğ´Ğ¾ 9
+	} while (*pDigitB == *pDigitA); //Ğ¿Ğ¾Ğ²Ñ‚Ğ¾Ñ€ÑĞµĞ¼, Ğ¿Ğ¾ĞºĞ° Ğ½Ğµ Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ¼ Ñ€Ğ°Ğ·Ğ½Ğ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾
 	do {
-		*pDigitC = rand() % 9 + 1; //ãåíåğàöèÿ òğåòüåãî ÷èñëà îò 1 äî 9
+		*pDigitC = rand() % 9 + 1; //Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ñ Ñ‚Ñ€ĞµÑ‚ÑŒĞµĞ³Ğ¾ Ñ‡Ğ¸ÑĞ»Ğ° Ğ¾Ñ‚ 1 Ğ´Ğ¾ 9
 	} while (*pDigitC == *pDigitA || *pDigitC == *pDigitB);
 
 }
 
 string createExample(int* pResult) {
-	string outputExample = ""; //ñîçäàíèå ïåğåìåííîé STRING äëÿ âèçóàëüíîãî âûâîäà ïğèìåğà
-	int digitA, digitB, digitC; //ñîçäàíèå ÿ÷ååê â ïàìÿòè äëÿ 3 öèôğ
+	string outputExample = ""; //ÑĞ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ Ğ¿ĞµÑ€ĞµĞ¼ĞµĞ½Ğ½Ğ¾Ğ¹ STRING Ğ´Ğ»Ñ Ğ²Ğ¸Ğ·ÑƒĞ°Ğ»ÑŒĞ½Ğ¾Ğ³Ğ¾ Ğ²Ñ‹Ğ²Ğ¾Ğ´Ğ° Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€Ğ°
+	int digitA, digitB, digitC; //ÑĞ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ ÑÑ‡ĞµĞµĞº Ğ² Ğ¿Ğ°Ğ¼ÑÑ‚Ğ¸ Ğ´Ğ»Ñ 3 Ñ†Ğ¸Ñ„Ñ€
 
-	while (true) { //öèêë áóäåò ñîçäàâàòü ïğèìåğ, ïîêà îí íàñ íå óñòğîèò ïî óñëîâèş
+	while (true) { //Ñ†Ğ¸ĞºĞ» Ğ±ÑƒĞ´ĞµÑ‚ ÑĞ¾Ğ·Ğ´Ğ°Ğ²Ğ°Ñ‚ÑŒ Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€, Ğ¿Ğ¾ĞºĞ° Ğ¾Ğ½ Ğ½Ğ°Ñ Ğ½Ğµ ÑƒÑÑ‚Ñ€Ğ¾Ğ¸Ñ‚ Ğ¿Ğ¾ ÑƒÑĞ»Ğ¾Ğ²Ğ¸Ñ
 		generationDigits(&digitA, &digitB, &digitC);
 
 		if (digitA - digitB >= 0) {
-			outputExample += to_string(digitA) + " - " + to_string(digitB) + " + " + to_string(digitC) + " = "; //ñîçäàåì âèùóàëüíî ïğèìåğ äëÿ ğåøåíèÿ
-			*pResult = (digitA - digitB) + digitC; //ïğèñâàåâàåì ïî àäğåññó ğåçóëüòàò ïğèìåğà
-			break; //â ñëó÷àå, åñëè ïğèìåğ ïîäõîäèò ïîä óñëîâèå, òî öèêë çàêàí÷èâàåòñÿ
+			outputExample += to_string(digitA) + " - " + to_string(digitB) + " + " + to_string(digitC) + " = "; //ÑĞ¾Ğ·Ğ´Ğ°ĞµĞ¼ Ğ²Ğ¸Ñ‰ÑƒĞ°Ğ»ÑŒĞ½Ğ¾ Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€ Ğ´Ğ»Ñ Ñ€ĞµÑˆĞµĞ½Ğ¸Ñ
+			*pResult = (digitA - digitB) + digitC; //Ğ¿Ñ€Ğ¸ÑĞ²Ğ°ĞµĞ²Ğ°ĞµĞ¼ Ğ¿Ğ¾ Ğ°Ğ´Ñ€ĞµÑÑÑƒ Ñ€ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚ Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€Ğ°
+			break; //Ğ² ÑĞ»ÑƒÑ‡Ğ°Ğµ, ĞµÑĞ»Ğ¸ Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€ Ğ¿Ğ¾Ğ´Ñ…Ğ¾Ğ´Ğ¸Ñ‚ Ğ¿Ğ¾Ğ´ ÑƒÑĞ»Ğ¾Ğ²Ğ¸Ğµ, Ñ‚Ğ¾ Ñ†Ğ¸ĞºĞ» Ğ·Ğ°ĞºĞ°Ğ½Ñ‡Ğ¸Ğ²Ğ°ĞµÑ‚ÑÑ
 		}
 		else if ((digitA + digitB) - digitC >= 0) {
 			outputExample += to_string(digitA) + " + " + to_string(digitB) + " - " + to_string(digitC) + " = ";
@@ -165,16 +165,16 @@ string calculateAllTime(int allTime) {
 string chooseMsg(int chooseMsgID) {
 	string msg = "";
 	switch (chooseMsgID) {
-	case 0: msg += "Ââåäèòå èìÿ ïîëüçîâàòåëÿ: "; break;
-	case 1: msg += "Ñêîëüêî ïğèìåğîâ âû õîòèòå ğåøèòü?\n---> "; break;
-	case 2: msg += "Âû îøèáëèñü! Ïîïğîáóéòå åùå ğàç "; break;
-	case 3: msg += "Æåëàåòå ïîâòîğèòü åùå ğàç? - íàæìèòå 1 / ÄÀ \n---> "; break;
-	case 4: msg += "Èìÿ ïîëüçîâàòåëÿ: "; break;
-	case 5: msg += "Âğåìÿ ïğîõîæäåíèÿ: "; break;
-	case 6: msg += "Êîëè÷åñòâî ïğèìåğîâ: "; break;
-	case 7: msg += "Êîëè÷åñòâî îøèáîê: "; break;
-	case 8: msg += "ÌÅÑÒÎ "; break;
-	case 9: msg += "| Èìÿ | Âğåìÿ | Óğàâíåíèé | Îøèáîê | "; break;
+	case 0: msg += "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¸Ğ¼Ñ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ: "; break;
+	case 1: msg += "Ğ¡ĞºĞ¾Ğ»ÑŒĞºĞ¾ Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€Ğ¾Ğ² Ğ²Ñ‹ Ñ…Ğ¾Ñ‚Ğ¸Ñ‚Ğµ Ñ€ĞµÑˆĞ¸Ñ‚ÑŒ?\n---> "; break;
+	case 2: msg += "Ğ’Ñ‹ Ğ¾ÑˆĞ¸Ğ±Ğ»Ğ¸ÑÑŒ! ĞŸĞ¾Ğ¿Ñ€Ğ¾Ğ±ÑƒĞ¹Ñ‚Ğµ ĞµÑ‰Ğµ Ñ€Ğ°Ğ· "; break;
+	case 3: msg += "Ğ–ĞµĞ»Ğ°ĞµÑ‚Ğµ Ğ¿Ğ¾Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ñ‚ÑŒ ĞµÑ‰Ğµ Ñ€Ğ°Ğ·? - Ğ½Ğ°Ğ¶Ğ¼Ğ¸Ñ‚Ğµ 1 / Ğ”Ğ \n---> "; break;
+	case 4: msg += "Ğ˜Ğ¼Ñ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ: "; break;
+	case 5: msg += "Ğ’Ñ€ĞµĞ¼Ñ Ğ¿Ñ€Ğ¾Ñ…Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ñ: "; break;
+	case 6: msg += "ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€Ğ¾Ğ²: "; break;
+	case 7: msg += "ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ¾ÑˆĞ¸Ğ±Ğ¾Ğº: "; break;
+	case 8: msg += "ĞœĞ•Ğ¡Ğ¢Ğ "; break;
+	case 9: msg += "| Ğ˜Ğ¼Ñ | Ğ’Ñ€ĞµĞ¼Ñ | Ğ£Ñ€Ğ°Ğ²Ğ½ĞµĞ½Ğ¸Ğ¹ | ĞÑˆĞ¸Ğ±Ğ¾Ğº | "; break;
 
 	case 10: msg += "Input your Nick Name: "; break;
 	case 11: msg += "How many examples do you want to solve?\n---> "; break;
