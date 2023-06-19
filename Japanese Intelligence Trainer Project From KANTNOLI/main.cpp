@@ -3,9 +3,10 @@
 int main() { 
 	setlocale(LC_ALL, "RUS"); 
 	srand(time(NULL));
+
 	string nickName = "Unknouwn"; 
 	bool flag = true; //для цикла while
-	int timeStart, timeWin; 
+	int timeStart, timeWin, allTime;
 	bool chooseLanguage = false;
 	int countExample = 0, countMistak = 0;
 	int result, input; 
@@ -23,7 +24,7 @@ int main() {
 	while (flag) {
 		createTopUsersStart(top, sizeTop);
 		countMistak = 0;
-		cout << chooseMsg(1, 11, chooseLanguage) << endl;
+		cout << chooseMsg(1, 11, chooseLanguage);
 		do {
 			cin >> countExample;
 		} while (countExample <= 0);
@@ -35,7 +36,7 @@ int main() {
 			while (true) { //цикл while - будте работать, пока пользователь правильно не решит уравнение
 				cout << example;
 				cin >> input;
-				if (result == input) {//в случае, если ответ правильный
+				if (result == input) {//в случае, если ответ правильный 
 					break; //закрытие цикла
 				}
 				cout << chooseMsg(2, 12, chooseLanguage) << endl;
@@ -46,17 +47,13 @@ int main() {
 		}
 		system("cls");
 		timeWin = time(NULL);
-		int allTime = timeWin - timeStart;
+		allTime = timeWin - timeStart;
+
 		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak );
 		
-		cout << convert_stats(chooseLanguage, allTime, timeStart, timeWin, nickName, countExample, countMistak);
+		cout << convert_stats(chooseLanguage, allTime, timeStart, timeWin, nickName, countExample, countMistak) << endl;
+		cout << convetStringArray(top, sizeTop, chooseLanguage);	
 
-		cout << "<----------------------->" << endl;
-		cout << chooseMsg(9, 19, chooseLanguage) << endl << endl;;
-
-		string temp = chooseLanguage ? convetStringArray(top, sizeTop, chooseLanguage) : convetStringArray(top, sizeTop, chooseLanguage); 
-		cout << temp;
-		cout << "<----------------------->" << endl; 
 		cout << chooseMsg(3, 13, chooseLanguage);
 		
 		getchar();

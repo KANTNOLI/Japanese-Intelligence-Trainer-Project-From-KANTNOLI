@@ -104,16 +104,19 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 	fout.close();
 }
 string convetStringArray(UserData* top,int size, bool chooseLanguage) {
-	string msg = "";
+	string msg = chooseMsg(9, 19, chooseLanguage) + "\n";
+
+	msg += "<------------------------------------------->\n"; 
 
 	for (int i = 0; i < size; i++) {
-		msg += chooseMsg(8, 18, chooseLanguage) + to_string(i + 1) + "\n";
-		msg += top[i].get_name() + "  ";  
-		msg += calculateAllTime(top[i].get_time()) + " ";
-		msg += to_string(top[i].get_countExamples()) + " ";
-		msg += to_string(top[i].get_countMistakes()) + "\n\n";
+		msg += chooseMsg(8, 18, chooseLanguage) + to_string(i + 1) + "\n| ";
+		msg += top[i].get_name() + " | ";  
+		msg += calculateAllTime(top[i].get_time()) + " | ";
+		msg += to_string(top[i].get_countExamples()) + " | ";
+		msg += to_string(top[i].get_countMistakes()) + " |\n\n";
 	}
 
+	msg += "<------------------------------------------->\n\n";
 
 	return msg;
 }
