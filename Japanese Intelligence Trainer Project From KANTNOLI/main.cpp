@@ -3,7 +3,7 @@
 int main() { 
 	setlocale(LC_ALL, "RUS"); 
 	srand(time(NULL));
-	string msg = "", nickName = ""; 
+	string nickName = ""; 
 	bool flag = true; //для цикла while
 	int timeStart, timeWin; 
 	bool chooseLanguage = false;
@@ -17,15 +17,13 @@ int main() {
 	cout << "Select language (1 - Russian; Other keys - English)\n---> ";
 	chooseLanguage = getchar() == '1';
 	system("cls");
-	msg = chooseMsg(0, 10, chooseLanguage);
-	cout << msg;
+	cout << chooseMsg(0, 10, chooseLanguage);
 	cin >> nickName;
 
 	while (flag) {
 		createTopUsersStart(top, sizeTop);
 		countMistak = 0;
-		msg = chooseMsg(1, 11, chooseLanguage);
-		cout << msg;
+		cout << chooseMsg(1, 11, chooseLanguage) << endl;
 		do {
 			cin >> countExample;
 		} while (countExample <= 0);
@@ -40,8 +38,7 @@ int main() {
 				if (result == input) {//в случае, если ответ правильный
 					break; //закрытие цикла
 				}
-				msg = chooseMsg(2, 12, chooseLanguage);
-				cout << msg << endl;
+				cout << chooseMsg(2, 12, chooseLanguage) << endl;
 				countMistak++;
 			}
 
@@ -51,25 +48,20 @@ int main() {
 		timeWin = time(NULL);
 		int allTime = timeWin - timeStart;
 
-		msg = chooseMsg(4, 14, chooseLanguage);
-		cout << msg << nickName << endl;
-		msg = chooseMsg(5, 15, chooseLanguage);
-		cout << msg << calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + 10800) + " - " + calculateAllTime(timeWin + 10800) << endl; // - 10800 - это 3ч - нужно для регулирования времени под наше
-		msg = chooseMsg(6, 16, chooseLanguage);
-		cout << msg << countExample << endl;
-		msg = chooseMsg(7, 17, chooseLanguage);
-		cout << msg << countMistak << endl;
+		cout << chooseMsg(4, 14, chooseLanguage) << endl;;
+		cout << chooseMsg(5, 15, chooseLanguage) << calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + 10800) + " - " + calculateAllTime(timeWin + 10800) << endl; // - 10800 - это 3ч - нужно для регулирования времени под наше
+		cout << chooseMsg(6, 16, chooseLanguage) << endl;;
+		cout << chooseMsg(7, 17, chooseLanguage) << endl;;
 		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak);
 		
 		cout << "<----------------------->" << endl;
-		msg = chooseMsg(9, 19, chooseLanguage);
-		cout << msg << endl << endl;
+		cout << chooseMsg(9, 19, chooseLanguage) << endl << endl;;
 
 		string temp = chooseLanguage ? convetStringArray(top, sizeTop, 8) : convetStringArray(top, sizeTop, 18); 
 		cout << temp;
 		cout << "<----------------------->" << endl; 
-		msg = chooseMsg(3, 13, chooseLanguage);
-		cout << msg;
+		cout << chooseMsg(3, 13, chooseLanguage);
+		
 		getchar();
 
 		flag = getchar() == '1' ? true : false;
