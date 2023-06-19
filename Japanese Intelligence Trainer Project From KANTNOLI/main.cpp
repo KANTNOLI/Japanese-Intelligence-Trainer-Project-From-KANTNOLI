@@ -17,14 +17,14 @@ int main() {
 	cout << "Select language (1 - Russian; Other keys - English)\n---> ";
 	chooseLanguage = getchar() == '1';
 	system("cls");
-	msg = chooseLanguage ? chooseMsg(0) : chooseMsg(10);
+	msg = chooseMsg(0, 10, chooseLanguage);
 	cout << msg;
 	cin >> nickName;
 
 	while (flag) {
 		createTopUsersStart(top, sizeTop);
 		countMistak = 0;
-		msg = chooseLanguage ? chooseMsg(1) : chooseMsg(11);
+		msg = chooseMsg(1, 11, chooseLanguage);
 		cout << msg;
 		do {
 			cin >> countExample;
@@ -40,7 +40,7 @@ int main() {
 				if (result == input) {//в случае, если ответ правильный
 					break; //закрытие цикла
 				}
-				msg = chooseLanguage ? chooseMsg(2) : chooseMsg(12);
+				msg = chooseMsg(2, 12, chooseLanguage);
 				cout << msg << endl;
 				countMistak++;
 			}
@@ -51,24 +51,24 @@ int main() {
 		timeWin = time(NULL);
 		int allTime = timeWin - timeStart;
 
-		msg = chooseLanguage ? chooseMsg(4) : chooseMsg(14);
+		msg = chooseMsg(4, 14, chooseLanguage);
 		cout << msg << nickName << endl;
-		msg = chooseLanguage ? chooseMsg(5) : chooseMsg(15);
+		msg = chooseMsg(5, 15, chooseLanguage);
 		cout << msg << calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + 10800) + " - " + calculateAllTime(timeWin + 10800) << endl; // - 10800 - это 3ч - нужно для регулирования времени под наше
-		msg = chooseLanguage ? chooseMsg(6) : chooseMsg(16);
+		msg = chooseMsg(6, 16, chooseLanguage);
 		cout << msg << countExample << endl;
-		msg = chooseLanguage ? chooseMsg(7) : chooseMsg(17);
+		msg = chooseMsg(7, 17, chooseLanguage);
 		cout << msg << countMistak << endl;
 		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak);
 		
 		cout << "<----------------------->" << endl;
-		msg = chooseLanguage ? chooseMsg(9) : chooseMsg(19);
+		msg = chooseMsg(9, 19, chooseLanguage);
 		cout << msg << endl << endl;
 
 		string temp = chooseLanguage ? convetStringArray(top, sizeTop, 8) : convetStringArray(top, sizeTop, 18); 
 		cout << temp;
 		cout << "<----------------------->" << endl; 
-		msg = chooseLanguage ? chooseMsg(3) : chooseMsg(13); 
+		msg = chooseMsg(3, 13, chooseLanguage);
 		cout << msg;
 		getchar();
 

@@ -162,9 +162,10 @@ string calculateAllTime(int allTime) {
 	return to_string(hour) + ":" + (minute > 9 ? to_string(minute) : "0" + to_string(minute)) + ":" + (second > 9 ? to_string(second) : "0" + to_string(second));
 }
 
-string chooseMsg(int chooseMsgID) {
+string chooseMsg(int chooseMsgID1, int chooseMsgID2, bool chooseLanguage) {
 	string msg = "";
-	switch (chooseMsgID) {
+	
+	switch (chooseLanguage ? chooseMsgID1 : chooseMsgID2) { 
 	case 0: msg += "Введите имя пользователя: "; break;
 	case 1: msg += "Сколько примеров вы хотите решить?\n---> "; break;
 	case 2: msg += "Вы ошиблись! Попробуйте еще раз "; break;

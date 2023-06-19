@@ -13,5 +13,5 @@ string createExample(int* pResult);
 
 string calculateAllTime(int allTime);
 
-string chooseMsg(int chooseMsgID); 
+string chooseMsg(int chooseMsgID1,int chooseMsgID2, bool chooseLanguage);
 
