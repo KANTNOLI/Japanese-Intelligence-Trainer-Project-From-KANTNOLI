@@ -14,9 +14,9 @@ int main() {
 	UserData* top = new UserData[sizeTop];
 
 
-	cout << "Выберите язык  (1 - Русский; Другие клавиши - Англ)" << endl;
-	cout << "Select language (1 - Russian; Other keys - English)\n---> ";
+	cout << chooseMsg(-1, -1, chooseLanguage);
 	chooseLanguage = getchar() == '1';
+	
 	system("cls");
 	cout << chooseMsg(0, 10, chooseLanguage);
 	cin >> nickName;
@@ -42,9 +42,9 @@ int main() {
 				cout << chooseMsg(2, 12, chooseLanguage) << endl;
 				countMistak++;
 			}
-
-
 		}
+
+		
 		system("cls");
 		timeWin = time(NULL);
 		allTime = timeWin - timeStart;

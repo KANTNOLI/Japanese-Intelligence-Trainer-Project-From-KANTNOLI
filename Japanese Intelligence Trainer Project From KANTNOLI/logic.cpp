@@ -13,13 +13,13 @@ void createTopUsersStart(UserData* top, int size) {
 		cout << "ERROR - Number 1 - FILE" << endl;
 	}
 	else {
-		if (msg == "") {
+		if (msg == "") { //в случае есть файл пуст - создание нового топа
 			fout.open("top5", ifstream::app);
 			if (!fout.is_open()) {
 				cout << "ERROR - Number 2 - FILE" << endl;
 			}
 			else {
-				for (int i = 0; i < size; i++) {
+				for (int i = 0; i < size; i++) { //создание пустых игроков
 					fout << top[i].get_name() + " ";
 					fout << top[i].get_time() + " ";
 					fout << to_string(top[i].get_countExamples()) + " ";
@@ -28,7 +28,7 @@ void createTopUsersStart(UserData* top, int size) {
 				fout.close();
 			}
 		}
-		else {
+		else { //в случае если топ есть и игрок играл, делаем обработку и создания массива , чтобы работать с данными файла
 			convertUserTopArray(top, size);
 		}
 	}
@@ -56,17 +56,17 @@ void convertUserTopArray(UserData* top, int size) {
 			top[i].set_countMistakes(tempInt);
 			tempInt = -1;
 		}
-	}
 
-	fin.close();
+		fin.close();
+	}
 }
 void addUserArray(UserData* top, int size, string name, int time, int countExamples, int countMistakes) {
-	UserData current(name, time, countExamples, countMistakes); 
+	UserData current(name, time, countExamples, countMistakes); //создание нового игрока 
 
-	for (int i = 0; i < size; i++) {
-		if (current.get_countExamples() > top[i].get_countExamples() or current.get_countExamples() == top[i].get_countExamples() and current.get_time() < top[i].get_time() or
-			current.get_countExamples() == top[i].get_countExamples() and current.get_time() == top[i].get_time() and current.get_countMistakes() < top[i].get_countMistakes()) {
-			UserData temp; 
+	for (int i = 0; i < size; i++) { //перебираем всех игроков
+		if (current.get_countExamples() > top[i].get_countExamples() or current.get_countExamples() == top[i].get_countExamples() and current.get_time() < top[i].get_time() or //сравниваем по времени и тд
+			current.get_countExamples() == top[i].get_countExamples() and current.get_time() == top[i].get_time() and current.get_countMistakes() < top[i].get_countMistakes()) { 
+			UserData temp; //темповская переменная для обмена данными игроков
 
 			temp.set_name(top[i].get_name());
 			temp.set_time(top[i].get_time());
@@ -82,7 +82,7 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 			current.set_time(temp.get_time());
 			current.set_countExamples(temp.get_countExamples());  
 			current.set_countMistakes(temp.get_countMistakes()); 
-		}
+		}//дефолтный обмен данными 
 	}
 
 	ofstream fout;
@@ -93,15 +93,14 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 		cout << "ERROR - number 4 - FILE" << endl;
 	}
 	else {
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size; i++) { //запись новых игроков
 			fout << top[i].get_name() + " ";
 			fout << to_string(top[i].get_time()) + " ";
 			fout << to_string(top[i].get_countExamples()) + " ";
 			fout << to_string(top[i].get_countMistakes()) + "\n";
 		}
+		fout.close(); 
 	}
-
-	fout.close();
 }
 string convetStringArray(UserData* top,int size, bool chooseLanguage) {
 	string msg = chooseMsg(9, 19, chooseLanguage) + "\n";
@@ -197,6 +196,7 @@ string chooseMsg(int chooseMsgID1, int chooseMsgID2, bool chooseLanguage) {
 	case 17: msg += "Number of mistakes: "; break;
 	case 18: msg += "TOP "; break;
 	case 19: msg += "| Name | Time | Examples | Mistakes | "; break;
+	default:  msg += "Выберите язык  (1 - Русский; Другие клавиши - Англ)\nSelect language (1 - Russian; Other keys - English)\n---> ";
 	}
 
 	return msg;
