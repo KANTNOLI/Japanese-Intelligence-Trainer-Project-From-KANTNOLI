@@ -3,7 +3,7 @@
 int main() { 
 	setlocale(LC_ALL, "RUS"); 
 	srand(time(NULL));
-	string nickName = ""; 
+	string nickName = "Unknouwn"; 
 	bool flag = true; //для цикла while
 	int timeStart, timeWin; 
 	bool chooseLanguage = false;
@@ -47,17 +47,14 @@ int main() {
 		system("cls");
 		timeWin = time(NULL);
 		int allTime = timeWin - timeStart;
-
-		cout << chooseMsg(4, 14, chooseLanguage) << endl;;
-		cout << chooseMsg(5, 15, chooseLanguage) << calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + 10800) + " - " + calculateAllTime(timeWin + 10800) << endl; // - 10800 - это 3ч - нужно для регулирования времени под наше
-		cout << chooseMsg(6, 16, chooseLanguage) << endl;;
-		cout << chooseMsg(7, 17, chooseLanguage) << endl;;
-		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak);
+		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak );
 		
+		cout << convert_stats(chooseLanguage, allTime, timeStart, timeWin, nickName, countExample, countMistak);
+
 		cout << "<----------------------->" << endl;
 		cout << chooseMsg(9, 19, chooseLanguage) << endl << endl;;
 
-		string temp = chooseLanguage ? convetStringArray(top, sizeTop, 8) : convetStringArray(top, sizeTop, 18); 
+		string temp = chooseLanguage ? convetStringArray(top, sizeTop, chooseLanguage) : convetStringArray(top, sizeTop, chooseLanguage); 
 		cout << temp;
 		cout << "<----------------------->" << endl; 
 		cout << chooseMsg(3, 13, chooseLanguage);

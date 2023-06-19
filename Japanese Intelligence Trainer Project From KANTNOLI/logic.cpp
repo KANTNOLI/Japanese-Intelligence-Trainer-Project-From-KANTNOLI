@@ -34,7 +34,6 @@ void createTopUsersStart(UserData* top, int size) {
 	}
 	fin.close();
 }
-
 void convertUserTopArray(UserData* top, int size) {
 	ifstream fin;
 
@@ -61,7 +60,6 @@ void convertUserTopArray(UserData* top, int size) {
 
 	fin.close();
 }
-
 void addUserArray(UserData* top, int size, string name, int time, int countExamples, int countMistakes) {
 	UserData current(name, time, countExamples, countMistakes); 
 
@@ -105,12 +103,11 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 
 	fout.close();
 }
-
-string convetStringArray(UserData* top,int size, int chooseMsgID) {
+string convetStringArray(UserData* top,int size, bool chooseLanguage) {
 	string msg = "";
 
 	for (int i = 0; i < size; i++) {
-		msg += chooseMsg(chooseMsgID) + to_string(i + 1) + "\n";
+		msg += chooseMsg(8, 18, chooseLanguage) + to_string(i + 1) + "\n";
 		msg += top[i].get_name() + "  ";  
 		msg += calculateAllTime(top[i].get_time()) + " ";
 		msg += to_string(top[i].get_countExamples()) + " ";
@@ -131,7 +128,6 @@ void generationDigits(int* pDigitA, int* pDigitB, int* pDigitC) { //функци
 	} while (*pDigitC == *pDigitA || *pDigitC == *pDigitB);
 
 }
-
 string createExample(int* pResult) {
 	string outputExample = ""; //создание переменной STRING для визуального вывода примера
 	int digitA, digitB, digitC; //создание ячеек в памяти для 3 цифр
@@ -154,14 +150,25 @@ string createExample(int* pResult) {
 	return outputExample;
 }
 
-string calculateAllTime(int allTime) {
+string convert_stats(bool chooseLanguage, int allTime,int  timeStart,int timeWin, string nickName, int countExample, int countMistak) {
+	string msg = "";
+	int threeHour = 10800;
+
+	msg += chooseMsg(4, 14, chooseLanguage) + nickName +"\n"; 
+	msg += chooseMsg(5, 15, chooseLanguage) + " " + calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + threeHour) + " - " + calculateAllTime(timeWin + threeHour) + "\n";
+	msg += chooseMsg(6, 16, chooseLanguage) + to_string(countExample) + "\n"; 
+	msg += chooseMsg(7, 17, chooseLanguage) + to_string(countMistak) + "\n"; 
+
+	return msg;
+}
+
+string calculateAllTime(int allTime) { 
 	int hour = allTime / 3600 % 24;
 	int minute = allTime % 3600 / 60;
 	int second = allTime % 60;
 
 	return to_string(hour) + ":" + (minute > 9 ? to_string(minute) : "0" + to_string(minute)) + ":" + (second > 9 ? to_string(second) : "0" + to_string(second));
 }
-
 string chooseMsg(int chooseMsgID1, int chooseMsgID2, bool chooseLanguage) {
 	string msg = "";
 	
