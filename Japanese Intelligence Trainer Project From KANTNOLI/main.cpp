@@ -30,7 +30,7 @@ int main() {
 		} while (countExample <= 0);
 		system("cls");
 
-		timeStart = time(NULL);
+		timeStart = time(NULL); //Главная часть программы - работа
 		for (int i = 0; i < countExample; i++) {
 			string example = createExample(&result);
 			while (true) { //цикл while - будте работать, пока пользователь правильно не решит уравнение
@@ -49,10 +49,10 @@ int main() {
 		timeWin = time(NULL);
 		allTime = timeWin - timeStart;
 
-		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak );
+		addUserArray(top, sizeTop, nickName, allTime, countExample, countMistak ); //добавление игрока в массив, который потом переобразовывается в файл
 		
-		cout << convert_stats(chooseLanguage, allTime, timeStart, timeWin, nickName, countExample, countMistak) << endl;
-		cout << convetStringArray(top, sizeTop, chooseLanguage);	
+		cout << convert_stats(chooseLanguage, allTime, timeStart, timeWin, nickName, countExample, countMistak) << endl; //вывод статистики игрока 
+		cout << convetStringArray(top, sizeTop, chooseLanguage); //вывод  топа
 
 		cout << chooseMsg(3, 13, chooseLanguage);
 		

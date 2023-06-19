@@ -43,7 +43,7 @@ void convertUserTopArray(UserData* top, int size) {
 		cout << "ERROR - number 3 - FILE" << endl;
 	}
 	else {
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size; i++) { //переписываем данные игроков в массив для дальнейшей работы
 			string tempString = "";
 			fin >> tempString;
 			top[i].set_name(tempString);
@@ -103,11 +103,11 @@ void addUserArray(UserData* top, int size, string name, int time, int countExamp
 	}
 }
 string convetStringArray(UserData* top,int size, bool chooseLanguage) {
-	string msg = chooseMsg(9, 19, chooseLanguage) + "\n";
+	string msg = chooseMsg(9, 19, chooseLanguage) + "\n"; 
 
 	msg += "<------------------------------------------->\n"; 
 
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++) { //выводим данные топа, сразу с массива
 		msg += chooseMsg(8, 18, chooseLanguage) + to_string(i + 1) + "\n| ";
 		msg += top[i].get_name() + " | ";  
 		msg += calculateAllTime(top[i].get_time()) + " | ";
@@ -154,7 +154,7 @@ string createExample(int* pResult) {
 
 string convert_stats(bool chooseLanguage, int allTime,int  timeStart,int timeWin, string nickName, int countExample, int countMistak) {
 	string msg = "";
-	int threeHour = 10800;
+	int threeHour = 10800; //переменная для создания часового пояса МИНСК + 3 часа
 
 	msg += chooseMsg(4, 14, chooseLanguage) + nickName +"\n"; 
 	msg += chooseMsg(5, 15, chooseLanguage) + " " + calculateAllTime(allTime) + " | " + calculateAllTime(timeStart + threeHour) + " - " + calculateAllTime(timeWin + threeHour) + "\n";
